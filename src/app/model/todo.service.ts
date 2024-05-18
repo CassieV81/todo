@@ -12,12 +12,12 @@ export class TodoService {
   url = "http://localhost:3000/api/todos"
   http: HttpClient = inject(HttpClient);
 
-  getTodos(): Observable<any> {
-    return this.http.get(this.url)
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(this.url)
   }
 
-  getTodo(id: number): Observable<any> {
-    return this.http.get(this.url + '/' + id)
+  getTodo(id: number): Observable<Todo> {
+    return this.http.get<Todo>(this.url + '/' + id)
   }
 
   addTodo(todo: Todo) {
