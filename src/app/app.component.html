@@ -19,7 +19,7 @@
           <p>{{todo.title}}</p>
           <input type="checkbox" [checked]="todo.completed" (click)="completeTodo(todo)">
           <button type="button" (click)="updateTodo(todo)">Edit</button>
-          <button type="button" (click)="deleteTodo(todo.id)">Delete</button>
+          <button type="button" (click)="deleteTodo(todo)">Delete</button>
         </div>
       }
     }

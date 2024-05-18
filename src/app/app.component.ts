@@ -27,11 +27,12 @@ export class AppComponent {
   getTodos() {
     this.todoSub = this.todoService.getTodos().subscribe((data) => {
       this.todos = data;
+      console.log(this.todos);
     });
   }
 
-  getTodo(id: number) {
-    this.todoService.getTodo(id).subscribe((data) => {
+  getTodo(todo: Todo) {
+    this.todoService.getTodo(todo).subscribe((data) => {
       this.todo = data;
     });
   }
@@ -47,7 +48,7 @@ export class AppComponent {
 
   completeTodo(todo: Todo) {
     todo.completed = !todo.completed;
-    this.todoService.editTodo(todo.id, todo).subscribe(() => this.getTodos());
+    this.todoService.editTodo(todo).subscribe(() => this.getTodos());
   }
 
   updateTodo(todo: Todo) {
@@ -63,21 +64,21 @@ export class AppComponent {
     if (this.editMode) {
       this.todo.title = this.todoForm.controls['todoInput'].value;
       this.todo.completed = this.todoForm.controls['todoCheck'].value;
-      this.todoService.editTodo(this.todo.id, this.todo).subscribe(() => this.getTodos());
+      this.todoService.editTodo(this.todo).subscribe(() => this.getTodos());
       this.getTodos();
       this.editMode = false;
     } else {
       const id = this.todos.length + 1;
       const input = this.todoForm.controls['todoInput'].value;
       const checked = this.todoForm.controls['todoCheck'].value;
-      const todo: Todo = new Todo(id, input, checked);
+      const todo: Todo = new Todo(input, checked);
       this.addTodo(todo);
     }
     this.todoForm.reset();
   }
 
-  deleteTodo(id: number) {
-    this.todoService.deleteTodo(id).subscribe(() => this.getTodos());
+  deleteTodo(todo: Todo) {
+    this.todoService.deleteTodo(todo).subscribe(() => this.getTodos());
     this.getTodos();
   }
 
