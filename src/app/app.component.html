@@ -17,7 +17,7 @@
       @for (todo of todos; track todo) {
         <div class="todo">
           <p>{{todo.title}}</p>
-          <input type="checkbox" [checked]="todo.completed" (click)="completeTodo(todo)">
+          <input type="checkbox" [checked]="todo.completed" (change)="completeTodo(todo)">
           <button type="button" (click)="updateTodo(todo)">Edit</button>
           <button type="button" (click)="deleteTodo(todo)">Delete</button>
         </div>
