@@ -74,7 +74,7 @@ export class AppComponent {
       const todo: Todo = new Todo(input, checked);
       this.addTodo(todo);
     }
-    this.todoForm.reset();
+    this.todoForm.reset({todoCheck: false});
   }
 
   deleteTodo(todo: Todo) {
