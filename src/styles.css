@@ -12,3 +12,9 @@
     background-color: hsla(var(--bg-clr), 0.3);
     color: hsl(72, 45%, 15%);
 }
+
+html {
+    height: 100vh;
+    display: grid;
+    place-content: center;
+}
